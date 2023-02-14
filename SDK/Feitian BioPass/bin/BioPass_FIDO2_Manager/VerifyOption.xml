@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="260,280" mininfo="260,280" maxinfo="260,280" caption="0,0,0,40" sizebox="4,4,4,4"> <!-- 窗口的初始尺寸(宽800，高600)、窗口的最小尺寸(宽600，高400)、标题栏拖拽区域(高32)、可拖拽边框大小(这里添加sizebox后就可以拖拽边框调整大小了) -->
+    <Font name="微软雅黑" size="14" bold="false" italic="false" default="true" />
+	<Font name="Times New Roman" size="13" bold="false" italic="false"/>
+    <VerticalLayout  bkcolor="#FFFFFFFF" bkcolor2="#FFFFFFFF" bordercolor="#FF1883D7" bordersize="1"> <!-- 整个窗口的背景色 -->
+    	<HorizontalLayout height="40" bkcolor="#FFFFFFFF" bordercolor="#FF1883D7" bordersize="0" padding="1,1,1,1">
+            <Label text="Verification Options" padding="10,0,0,0" width="200" height="40" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" valign="center"/>
+			<Button name="closebtn" tooltip="Close" width="48" height="32" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage=" file=&apos;Close_Active.png&apos; " hotimage=" file=&apos;Close_MouseOver.png&apos; " pushedimage=" file=&apos;Close_Click.png&apos; " />
+        </HorizontalLayout>
+		<Control height="40"/>
+		<HorizontalLayout height="48">
+			<Control width="30"/>
+			<Button name="btn_pin" width="48" height="48" bkimage=" file=&apos;PIN_Button.png&apos; "/>
+			<Button name="btn_pin" text="     PIN" width="180" height="48" bkcolor="#FFFFFFFF" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" textpadding="10,10,0,0"/>
+		</HorizontalLayout>
+		<Control height="40"/>
+		<HorizontalLayout height="48">
+			<Control width="30"/>
+			<Button name="btn_fp" width="48" height="48" bkimage=" file=&apos;Finger_Button.png&apos; "/>
+			<Button name="btn_fp" text="     Fingerprint" width="180" height="48" bkcolor="#FFFFFFFF" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" textpadding="10,10,0,0"/>
+		</HorizontalLayout>
+    </VerticalLayout>
+</Window>

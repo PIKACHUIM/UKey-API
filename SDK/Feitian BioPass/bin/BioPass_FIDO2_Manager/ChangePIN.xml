@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="460,360" mininfo="460,360" maxinfo="460,360" caption="0,0,0,40" sizebox="4,4,4,4"> <!-- 窗口的初始尺寸(宽800，高600)、窗口的最小尺寸(宽600，高400)、标题栏拖拽区域(高32)、可拖拽边框大小(这里添加sizebox后就可以拖拽边框调整大小了) -->
+    <Font name="微软雅黑" size="14" bold="false" italic="false" default="true" />
+	<Font name="微软雅黑" size="12" bold="false" italic="false" /> <!--1-->
+	<Font name="Times New Roman" size="13" bold="false" italic="false"/>
+    <VerticalLayout  bkcolor="#FFFFFFFF" bkcolor2="#FFFFFFFF" bordercolor="#FF1883D7" bordersize="1"> <!-- 整个窗口的背景色 -->
+		<HorizontalLayout height="40" bkcolor="#FFFFFFFF" bordercolor="#FF1883D7" padding="1,1,1,1">
+			<Control width="10"/>
+			<Label text="Change PIN" width="200" height="40" valign="center" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA"/>
+			<Control width="200" />
+			<Button name="closebtn" tooltip="Close" width="48" height="32" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage=" file=&apos;Close_Active.png&apos; " hotimage=" file=&apos;Close_MouseOver.png&apos; " pushedimage=" file=&apos;Close_Click.png&apos; " />
+		</HorizontalLayout>
+
+		<Label name="txt_info" text="Change PIN for BioPass FIDO2" height="40" padding="30,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" valign="center" />
+
+		<Control height="20"/>
+		<HorizontalLayout height="30">
+			<Control width="30"/>
+			<Label name="txt_label" text="Old PIN" width="100" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" valign="center" font="1"/>
+			<Edit name="edit_pin_old" tooltip="Old PIN" width="200" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" focusbordercolor="#FF0078D7" bordersize="1" valign="center" password="true"/>
+			<Control width="5"/>
+		</HorizontalLayout>
+		<Label name="label_old_pin" text="" height="30" textcolor="#FFFF0000" disabledtextcolor="#FFA7A6AA" align="center" valign="center" font="1"/>
+
+		<HorizontalLayout height="30">
+			<Control width="30"/>
+            <Label name="txt_label" text="New PIN" width="100" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" valign="center" font="1"/>
+            <Edit name="edit_pin_new" tooltip="New PIN" width="200" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" focusbordercolor="#FF0078D7" bordersize="1" valign="center" password="true"/>
+			<Control width="5"/>
+        </HorizontalLayout>	
+		<Label name="label_new_pin" text="" height="30" textcolor="#FFFF0000" disabledtextcolor="#FFA7A6AA" align="center" valign="center" font="1"/>
+
+        <HorizontalLayout height="30">
+			<Control width="30"/>
+            <Label name="txt_label" text="Confirm PIN" width="100" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" valign="center" font="1"/>
+            <Edit name="edit_pin_new2"  tooltip="Confirm New PIN" width="200" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" focusbordercolor="#FF0078D7" bordersize="1" valign="center" password="true"/>
+			<Control width="5"/>
+        </HorizontalLayout>	
+		<Label name="label_new_pin2" text="" height="30" textcolor="#FFFF0000" disabledtextcolor="#FFA7A6AA" align="center" valign="center" font="1"/>
+
+        <HorizontalLayout height="30" padding="210,30,0,0">
+			<Button name="closebtn" text="Cancel" width="100" height="30" bkcolor="#FFCCCCCC" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" bordersize="0" bordercolor="#FFD7D7D7" focusbordercolor="#FF0078D7"/>
+			<Control width="30"/>
+        	<Button name="btn_ok" text="OK" width="100" height="30" bkcolor="#FFCCCCCC" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" bordersize="0" bordercolor="#FFD7D7D7" focusbordercolor="#FF0078D7"/>
+        </HorizontalLayout>        
+    </VerticalLayout>
+</Window>

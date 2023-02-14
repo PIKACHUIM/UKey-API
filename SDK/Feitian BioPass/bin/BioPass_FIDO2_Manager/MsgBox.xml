@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="500,250" caption="0,0,0,40">
+    <Font name="微软雅黑" size="14" bold="false" italic="false" default="true" />
+	<Font name="Times New Roman" size="13" bold="false" italic="false"/>
+    <VerticalLayout bkcolor="#FFFFFFFF" bkcolor2="#FFFFFFFF" bordercolor="#FF1883D7" bordersize="1">
+        <HorizontalLayout name="MsgTitle" height="40" bkcolor="#FFFFFFFF" bordercolor="#FF1883D7" padding="1,1,1,1">
+			<Control width="10"/>
+			<Label name="FSTitle" text="MessageBox" height="40" valign="center" textcolor="#FF282828" disabledtextcolor="#FFA7A6AA"/>
+			<Button name="closebtn" tooltip="Close" width="48" height="32" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" normalimage=" file=&apos;Close_Active.png&apos; " hotimage=" file=&apos;Close_MouseOver.png&apos; " pushedimage=" file=&apos;Close_Click.png&apos; " />
+        </HorizontalLayout>
+		
+        <VerticalLayout name="MsgBox" font="0"/>
+    </VerticalLayout>
+</Window>
