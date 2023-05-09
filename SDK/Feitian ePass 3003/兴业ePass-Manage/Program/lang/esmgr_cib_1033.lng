@@ -1,0 +1,143 @@
+
+[settings]
+; 2052 = 0x0804
+CodePage=2052
+Language=SimpleChinese (简体中文)
+FontFace=宋体
+FontHeight=9
+
+[strings]
+
+;1=确定
+1=OK
+;2=取消
+2=Cancel
+;10000=兴业网盾管理工具
+10000=Industrial Bank Token Manager
+;100=关于兴业网盾管理工具
+100=About Induatrial Bank Token Manager
+;101=关于兴业网盾管理工具(&A)...
+101=About Industrial Bank Token Manager(&A)...
+;1057=兴业网盾管理工具 V1.0
+1057=Industrial Bank Token Manager V1.0
+;1058=开发：EnterSafe\r\n\r\n版权所有(C) 2007 EnterSafe
+1058=Copyright(C) Induatrial Bank
+1064=http://www.EnterSafe.com
+
+;--------------------------------------------------------------
+; Slot information view
+;--------------------------------------------------------------
+;810=当前密码：
+810=Current Password:
+;811=新密码：
+811=New Password:
+;812=确认新密码：
+812=Confirm New Password:
+
+;==============================================================
+; Menu
+;==============================================================
+;10014=网盾列表
+10014=Token List
+
+;==============================================================
+; Status message
+;==============================================================
+;33012=修改网盾密码
+33012=Change Token Password
+;33013=修改网盾密码成功！
+33013=Token password changed successfully!
+;33015=两次输入的新密码不一致，请重新输入！
+33015=Failed to confirm the new password. Please retry!
+20226=The shield password can use a combination of 6-12 bits of letters and numbers. The letters are case-sensitive and do not allow three consecutive identical characters.
+20227=The shield password can use a combination of 6-12 bits of letters and numbers. The letters are case-sensitive and do not allow three consecutive identical characters.
+20228=New and old PIN should not be same. Please reinput
+20229=The shield password can use a combination of 6-12 bits of letters and numbers. The letters are case-sensitive and do not allow three consecutive identical characters.
+;33020=确定要退出吗？
+33020=Do you want to exit?
+;804=网盾密码错误。\r\n您只剩下一次尝试机会。\r\n假如再次输入错误的密码，网盾将被锁定！
+804=Error token password.\r\nYou have only the last chance to attempt.\r\nIf an incorrect password is input again, the token will be blocked. 
+33024=Please Input a Website Address.
+;==============================================================
+; Error message
+;==============================================================
+;5026=网盾中没有足够的空间存储证书！
+5026=No enough space to store certificates in the token.
+;5042=错误！
+5042=Error.
+;5043=网盾密码错误！\r\n请重新输入，您还有%d次尝试机会！
+5043=Error token password.\r\nPlease retry. You still have %d chances to attempt. 
+;5045=网盾密码已经被锁定，请与兴业银行联系。
+5045=Token password blocked. Please contact Industrial Bank.
+;5046=网盾已被拔出，请插入网盾。
+5046=The token has been removed. Please attach it again.
+;5048=网盾未初始化！
+5048=The token has not been initialized yet.
+;5049=请选择您要使用的网盾。
+5049=Please choose a token you want to use.
+
+;5051=数据格式错误！
+5051=Error data format.
+;5054=当前密码验证失败！\r\n您还有%d次尝试机会！
+5054=Failed to verify current password.\r\nYou still have %d chances to attempt.
+;5055=网盾密码的长度必须在6到12个字符之间，请重新输入！
+5055=The token password must be 6 to 12 characters. Please retry.
+;5056=网盾密码已经被锁定，无法修改网盾密码！
+5056=Token password blocked. Unable to change the password.
+;5057=网盾被写保护，无法修改网盾密码！
+5057=The token has been write-protected. Unable to change the password.
+;5058=修改网盾密码失败！
+5058=Failed to change token password.
+;5062=请选择要您要查看的证书。
+5062=Please choose a certificate you want to view.
+;5063=网盾密码的长度必须在6到12个字符之间，请重新输入！
+5063=The token password must be 6 to 12 characters. Please retry.
+;5068=原网盾密码错误！\r\n您只剩下最后一次尝试机会。\r\n假如再次输入错误的网盾密码，网盾将被锁定！
+5068=Error old token password.\r\nYou have only the last chance to attempt.\r\nIf an incorrect password is input again, the token will be blocked. 
+
+;1070=兴业银行网上银行
+1070=Industrial Bank Online
+;1071=网盾管理工具
+1071=TokenManager
+;1076=登录网银，并保存登录网址。
+1076=Log in to Online Bank and save the website.
+;1077=保存
+1077=Save
+;1078=登录
+1078=Login
+;6000=没有检测到网盾，请插入网盾。
+6000=No token detected. Please attach a token.
+;6001=下载证书时只能使用一个网盾，请拔出多余的网盾。
+6001=Only one token can be used when downloading certificates. Please remove any redundant tokens.
+;6002=网盾中已经存在证书，证书下载后将删除现有证书，是否继续？
+6002=A certificate already exists in the token. The existing certificate will be removed after downloading a certificate. Do you want to continue?
+
+;1073=下载证书
+1073=Download Certificate
+;1075=登录网银
+1075=Login to Online Bank
+;1072=修改密码
+1072=Change Password
+;1074=查看证书
+1074=View Certificate
+1079=Update
+32771=Sign Test
+
+;164=兴业银行更新提示
+164=Online Update
+;1080=现在更新
+1080=Update
+;1081=以后再说
+1081=Later
+;1082=发现您的网盾管理工具有最新版本，是否需要马上更新？
+1082=Online update is available, update now?
+;80005=兴业银行网盾管理工具已经是最新版本，无需更新。
+80005=No online update available.
+
+80001=Please choose a certificate you want to sign.
+80002=Sign failed!
+80003=Sign successed!
+80004=Industrial Bank Token Manager
+
+1087=SoftKeyBoard
+1086=For safety using of your USBKey, you should set the PIN to be 6-12 combined alphabets and numbers. PIN is case sensitive.Three consecutive identical characters are not allowe.

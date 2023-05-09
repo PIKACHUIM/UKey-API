@@ -1,0 +1,481 @@
+[settings]
+;1028 = 0x0404
+CodePage=1028
+Language=TradChinese
+FontFace=宋體
+FontHeight=9
+
+[strings]
+;==============================================================
+; Common strings
+;==============================================================
+10000=EnterSafe PKI 管理工具
+;10000=EnterSafe PKI Manager
+10001=管理員版
+;10001=Admin Version
+
+;==============================================================
+; Common Dialog box strings
+;==============================================================
+1=確定
+;1=OK
+2=取消
+;2=Cancel
+
+;==============================================================
+; About Box
+;==============================================================
+;100=About EnterSafe PKI Manager
+100=關於EnterSafe PKI 管理工具
+;101=&About EnterSafe PKI Manager...
+101=關於EnterSafe PKI 管理工具(&A)...
+;1057=EnterSafe PKI Manager V1.1
+1057=EnterSafe PKI 管理工具 V1.1
+;1058=Developer： EnterSafe\n\nCopyright(C) 2007-2009 EnterSafe
+1058=開發：EnterSafe\n\n版權所有(C) 2007-2009 EnterSafe
+1064=http://www.EnterSafe.com
+
+;==============================================================
+; Main dlg
+;==============================================================
+;---Static string
+;---can be enabled by ml_loadDlgStr
+1005=查看證書資訊(&V)
+;1005=Certificate &View
+1006=修改用戶PIN碼(&P)
+;1006=Change User &PIN
+1007=刪除...(&D)
+;1007=&Delete...
+1008=修改USBKey名(&T)
+;1008=Change &Token Name
+1009=系統選項(&O)
+;1009=&Options
+1011=初始化(&I)
+;1011=&Initialize
+1012=導出...(&E)
+;1012=&Export....
+1013=解鎖(&U)
+;1013=&Unblock
+1014=修改SO PIN(&G)
+;1014=Chan&ge SO PIN
+1015=登錄(&L)
+;1015=&Login
+1037=導入...(&R)
+;1037=Impo&rt...
+1056=歡迎使用EnterSafe PKI 管理工具。請先登錄。
+;1056=Welcome to EnterSafe PKI Manager. Please login.
+1062=查看屬性顯示->
+;1062=More Details->
+1060=隱藏屬性顯示->
+;1060=Hide Details->
+1072=顯示全部PCKS#11屬性
+;1072=Show All PCKS#11 properties
+
+1122=全局密鑰：
+;1122=Global Key
+
+
+;--Alternative string
+;--Set in controllers
+30001=登出(&L)
+;30001=&Log out
+30002=退出(&X)
+;30002=E&xit
+30003=歡迎使用EnterSafe PKI 管理工具。
+;30003=Welcome to EnterSafe PKI Manager.
+30050=請先登錄。
+;30050=Please login.
+;--Set in list view
+30004=資料欄
+;30004=Field
+30005=值
+;30005=Value
+30006=屬性名稱
+;30006=Name
+30007=屬性值
+;30007=Value
+30008=證書容器
+;30008=Certificate Container
+30009=製造商
+;30009=Manufacturer
+30010=標誌
+;30010=Flags
+30011=硬體版本
+;30011=Hardware Version
+30012=固件版本
+;30012=Firmware Version
+30013=USBKey名稱
+;30013=Token Name
+30014=型號
+;30014=Model
+30015=序列號
+;30015=Serial Number
+30016=最大PIN長度
+;30016=Max PIN Length
+30017=最小PIN長度
+;30017=Min PIN Length
+30018=公共資料區總空間
+;30018=Total Public Memory
+30019=公共資料區剩餘空間
+;30019=Free Public Memory
+30020=秘密資料區總空間
+;30020=Total Private Memory
+30021=秘密資料區剩餘空間
+;30021=Free Private Memory
+30022=可用於加密
+;30022=available for Encryption
+30023=可用於驗證
+;30023=available for Verification
+30024=可用於解密
+;30024=available for Decryption
+30025=可用於簽名
+;30025=available for Signature
+30026=是
+;30026=Yes
+30027=否
+;30027=No
+30044=演算法標識
+;30044=Algorithm ID
+30045=加密塊長度
+;30045=Cipher block length
+30046=密鑰長度
+;30046=Key length
+30047=干擾字元
+;30047=Salt value
+30048=密鑰訪問許可權標識
+;30048=Key permission
+30051=容器名稱
+;30051=Container name
+30052=證書名稱
+;30052=Certificate Name
+30053=證書ID
+;30053=Certificate ID
+30054=證書序列號
+;30054=Serial Number
+
+;--Set in tree view
+30028=USBKey列表
+;30028=Token list
+30029=簽名用（只用於簽名/驗證）
+;30029=Signature(Signature/Validation only)
+30030=密鑰交換用（用於加密/解密以及其他）
+;30030=Key Exchange(Encryption/Decryption etc.)
+30031=公鑰
+;30031=Public Key
+30032=私鑰
+;30032=Private Key
+30033=數據
+;30033=Data
+30055=證書
+;30055=Certificate
+
+;==============================================================
+; Login dlg
+;==============================================================
+;---Static string
+;---can be enabled by ml_loadDlgStr
+1041=PIN碼：
+;1041=User PIN:
+1103=使用軟鍵盤
+;1103=Enable soft keyboard
+;--Alternative string
+30034=請輸入PIN碼：
+;30034=Input user PIN：
+30035=登錄到 %s\r\n\r\n登錄後，即可使用導入、刪除等功能
+;30035=Login to %s.\r\n\r\nMore functions are available after logging in.
+
+;==============================================================
+; Import dlg
+;==============================================================
+;---Static string
+;---can be enabled by ml_loadDlgStr
+1020=流覽
+;1020=Browse
+1022=新建容器（請勿使用'\'）：
+;1022=New container(NOT including '\')：
+1023=使用已有的容器：
+;1023=Existing container：
+1025=簽名（只用於簽名/驗證）
+;1025=Signature(for signature / verification only)
+1026=密鑰交換（用於加密/解密以及其他）
+;1026=Key exchange(for encryption / decryption and other)
+1043=證書訪問密碼：
+;1043=File password：
+1104=用途
+;1104=Type：
+1105=選擇容器
+;1105=Select container
+1106=選擇要導入的檔
+;1106=Select a certificate file to import
+1119=導入檔中的全部證書
+;1119=All certificate(s) in the file
+1120=只導入文件中的用戶證書
+;1120=Only user certificate(s) in the file
+
+;==============================================================
+; SetPIN dlg
+;==============================================================
+;---Static string
+;---can be enabled by ml_loadDlgStr
+1046=原PIN碼：
+;1046=Old user PIN：
+1047=新PIN碼：
+;1047=New user PIN：
+1048=確認：
+;1048=Confirm:
+1092=低
+;1092=L
+1093=中
+;1093=M
+1094=高
+;1094=H
+1096=檢查強度
+;1096=Check intensity
+1101=使用軟鍵盤
+;1101=Enable soft keyboard
+;--Alternative string
+;--for set user PIN
+30036=修改%s的PIN碼
+;30036=Change user PIN of %s
+;--for set SO PIN
+30037=修改%s的SO PIN
+;30037=Change SO PIN of %s
+30038=原SO PIN：
+;30038=Old SO PIN：
+30039=新SO PIN：
+;30039=New SO PIN：
+;--for unlock
+30040=解鎖 %s
+;30040=Unblock %s.
+30041=SO PIN：
+;30041=SO PIN：
+30042=新用戶PIN：
+;30042=New user PIN：
+;---for export
+30043=導出
+;30043=Export
+
+;==============================================================
+; Token name dlg
+;==============================================================
+;---Static string
+;---can be enabled by ml_loadDlgStr
+1049=請勿以空格結尾
+;1049=NOT end with blank.
+;--Alternative string
+30056=修改 %s 的名稱
+;30056=Edit name of %s.
+
+;==============================================================
+; Low init dlg
+;==============================================================
+;---Static string
+;---can be enabled by ml_loadDlgStr
+1081=初始化參數
+;1081=Initialize parameters
+1082=USBKey名稱：
+;1082=Token name：
+1083=SO PIN：
+;1083=SO PIN：
+1084=用戶PIN碼：
+;1084=User PIN：
+1085=SO PIN最大重試次數：
+;1085=SO PIN try count：
+1086=用戶PIN最大重試次數：
+;1086=User PIN try count：
+1087=公有數據區大小：
+;1087=Public memory size：
+1088=私有數據區大小：
+;1088=Private memory size：
+1089=預置RSA密鑰對個數：
+;1089=RSA key pair count：
+1091=超時(單位：分鐘)：
+;1091=Timeout(in minute):
+1107=資料區大小總計不超過%d
+;1107=(Total memory size no more than %d)
+1108=Pin碼長度限制 (%d - %d位)
+;1108=(%d - %d bytes)
+1110=Pin碼重複次數限制 (%d - %d次)
+;1110=(%d - %d)
+1109=(不超過%d個)
+;1109=(no more than %d)
+1111=不超過%d分鐘;設0表示不限制超時
+;1111=no more than %d minutes;0 as no timeout
+1113=USBKey名稱請勿以空格結尾
+;1113=(Do NOT end with blank)
+1125=輸入您設置的全局密鑰
+;1125=Please input your globel key
+;==============================================================
+; Message string
+;==============================================================
+;---Common string
+33000=成功！
+;33000=Succeeded！
+33001=失敗！
+;33001=Failed！
+33002=完畢！
+;33002=Complete！
+33003=發生錯誤！
+;33003=Error！
+33039=是否繼續？
+;33039=Continue?
+33012=是否重新嘗試？您還有%d次機會 
+;33012=Try again? You can try %d times.
+33013=重新登錄後即可繼續使用
+;33013=To continue，please login again.
+33014=兩次輸入的新PIN碼不一致，請重新輸入
+;33014=The new PINs are not identical. Please check.
+33038=您只剩下一次機會
+;33038=Now you can try for the last time.
+33056=假如再次輸入錯誤的PIN碼，將被鎖定
+;33056=If user PIN is still incorrect， user will be locked.
+33057=假如再次輸入錯誤的SO PIN，將被鎖定
+;33057=If SO PIN is still incorrect， SO will be locked.
+
+;---Operation string
+33005=登錄中，請稍等...
+;33005=Logging in. Please wait...
+33006=正在導入，請不要拔出USBKey！
+;33006=Importing...DO NOT remove the token！
+33007=正在刪除，請不要拔出USBKey！
+;33007=Deleting...DO NOT remove the token！
+33008=正在初始化，請不要拔出USBKey！
+;33008=Initializing...DO NOT remove the token！
+33009=即將刪除所選的%d個對象
+;33009=Ready to delete the selected %d object(s).
+33010=即將刪除所選的容器以及容器中的所有資料\r\n刪除後，容器中的證書和密鑰對都將無法使用
+;33010=Ready to delete selected container and data within.\r\nAll certificates and keys in the container would not be available any more.
+33011=即將刪除所選的USBKey中的所有資料\r\n刪除後，所有容器、證書以及密鑰都將無法使用
+;33011=Ready to delete all data in the selected token.\r\nAll containers， certificates and keys in the token would not be available any more.
+;---注意英文後面有空格
+33067=刪除
+;33067=Deletion 
+33068=導入
+;33068=Importing  
+33069=導出
+;33069=Exporting  
+33070=修改PIN碼
+;33070=Changing user PIN 
+33071=修改USBKey名稱
+;33071=Changing token name 
+33072=解鎖
+;33072=Unblocking 
+33073=初始化
+;33073=Initializing 
+33074=修改SO PIN
+;33074=Changing SO PIN 
+
+;---notice string
+33015=USBKey中已經存在相同的證書。
+;33015=The same certificate has existed in the token.
+33016=確定要退出嗎？
+;33016=Are you sure to quit?
+33017=PIN碼不正確
+;33017=Incorrect user PIN.
+33018=SO PIN不正確
+;33018=Incorrect SO PIN.
+33019=您只剩下一次機會。\r\n假如再次輸入錯誤的PIN碼，將被鎖定
+;33019=Now you can try for the last time.\r\nIf the user PIN is still incorrect， the token will be locked.
+33020=您只剩下一次機會。\r\n假如再次輸入錯誤的SO PIN，將被鎖定
+;33020=Now you can try for the last time.\r\nIf the SO PIN is still incorrect， the token will be locked.
+33021=原PIN碼不正確
+;33021=Incorrect old user PIN.
+33022=原SO PIN不正確
+;33022=Incorrect old SO PIN.
+;33023=請輸入新PIN碼
+33023=Please input new user PIN.
+;33024=請輸入新SO PIN
+33024=Please input new SO PIN
+33025=使用前請正確地安裝%s
+;33025=Please install %s correctly before using
+33026=每個USBKey存儲的證書不能多於%d個
+;33026=There could not be more than %d certificates in one token
+33027=請選擇要使用的USBKey
+;33027=Please select the token to use
+33028=請選擇要刪除的物件
+;33028=Please select an object to delete
+33029=請選擇要導入的證書文件
+;33029=Please choose a certificate file to import
+33030=請登錄USBKey
+;33030=Please login
+33031=請選擇要查看的證書
+;33031=Please select the certificate to browse
+33032=請選擇要使用的容器
+;33032=Please select container
+33033=請選擇要導入的檔
+;33033=Please select a certificate file to import
+33034=請使用 %d 位- %d 位的SO PIN
+;33034=Please input %d - %d bytes SO PIN
+33035=請使用 %d 位- %d 位的PIN碼
+;33035=Please input %d - %d bytes user PIN
+33036=請選擇要導出的證書
+;33036=Please select a certificate to export
+33037=請確認所有參數都已設置為有效的值
+;33037=Please make sure that VALID value has been set in ALL parameters 
+
+;---Error message
+33040=USBKey中沒有足夠的空間存儲證書
+;33040=Not enough memory to store certificate
+33041=要導入的文件不存在
+;33041=The file does not exist
+33042=不支援的證書格式
+;33042=Certificates File Format is not recognized or supported
+33043=USBKey僅僅支援%d位及以下的RSA密鑰對
+;33043=Token supports no more than %d bits RSA key pair only
+33044=導入密鑰對失敗
+;33044=Importing key pair failed
+33045=導入證書失敗
+;33045=Importing certificate failed
+33046=用戶PIN碼被鎖定
+;33046=User PIN has been locked
+33047=USBKey被拔出，請插入
+;33047=Token is removed. Please insert
+33048=證書解析失敗，可能是訪問密碼錯誤
+;33048=Error occurred when decoding， maybe because invalid password is used
+33049=資料格式錯誤
+;33049=Invalid Data Format
+33050=新PIN碼過長
+;33050=New user PIN is too long
+33051=新SO PIN過長
+;33051=New SO PIN is too long
+33052=用戶PIN碼被鎖定
+;33052=User Pin has been locked
+33053=SO PIN碼被鎖定
+;33053=SO Pin has been locked
+33054=USBKey被防寫
+;33054=Token is write-protected
+33055=如果所選的容器中存有相同用途的證書或密鑰，將被替換
+;33055=If there exists any certificate(s) or key(s) with same usage in the selected container, it will be replaced.
+33058=不支援導入PFX格式的根證書
+;33058=Importing root certificate with PFX format is not available
+33059=USBKey狀態改變
+;33059=Token status has been changed
+33060=不同格式的證書不能混裝，請選擇其他容器
+;33060=Please select another container
+33061=即將初始化所選的USBKey\r\nUSBKey中的所有資料，包括容器、證書以及密鑰都將被清除
+;33061=Ready to initialize the selected token.\r\nAll data in the token will be cleared ，including containers， certificates and keys.
+33062=容器中的資料缺少與證書匹配的密鑰對，請重新選擇容器或創建新的容器
+;33062=No key pair matching the certificate is found in the data of the container. Please select another container or create a new container
+33063=導入的證書將會替換已有的證書: %s
+;33063=The certificate to be imported will replace the existing certificate %s.
+33075=您還有%d次重試的機會
+;33075=You can try %d times.
+33076=資料區總體大小不應超過%d
+;33076=Total memory size should not be more than %d
+33077=USBKey超時
+;33077=Token timed out
+33078=容器中存在相同的證書或密鑰，請選擇其他容器或新建容器
+;33078=The same certificate or key found in this container. Please select another container or create a new container
+33079=[需要更新]
+;33079=[Update needed]
+33080=相同的容器已經存在。是否使用已有的容器？
+;33080=Same container already exists. Would you use that?
+33081=請保留要初始化的USBKey並拔除其他的USBKey
+;33081=Please keep the token to be initialized and remove all others.
+33082=兩次輸入的用戶PIN碼不一致，請重新輸入
+;33082=The user PINs are not identical. Please check.
+33083=兩次輸入的SO PIN不一致，請重新輸入
+;33083=The SO PINs are not identical. Please check.
+33084=權杖僅僅支援%ld-%ld位的RSA密鑰對！
+33085=操作失敗，卡片是防寫的！
+;33085=Operation failed! The card is written-protected！

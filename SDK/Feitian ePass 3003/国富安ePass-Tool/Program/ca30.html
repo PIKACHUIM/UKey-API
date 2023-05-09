@@ -1,0 +1,599 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> CA30 </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META content="IE=7.0000" http-equiv="X-UA-Compatible">
+
+<script language="javascript" type="text/javascript">  
+		var GFACertEnroll = null;
+		var ostr = '<object classid="clsid:D3924785-8967-434C-9C19-91A6C58D0035" CODEBASE="GFACertEnroll.cab#Version=1,0,2,1" onreadystatechange="javascript:if(this.readyState==4) GFACertEnroll=this"> </object>';
+		var ostr64 = '<object classid="clsid:D3924785-8967-434C-9C19-91A6C58D0035" CODEBASE="GFACertEnroll64.cab#Version=1,0,2,1" onreadystatechange="javascript:if(this.readyState==4) GFACertEnroll=this"> </object>';
+	
+		if(navigator.cpuClass == 'x86')
+		{
+			alert("32");
+			document.write(ostr);
+		} else
+		{
+			alert("64");
+			document.write(ostr64);
+	  } 
+	  
+	  alert(GFACertEnroll.ver_str); 
+	  
+	  //var href = window.location.href;
+		var href = "https://www.gfbgfb.com/dir/ca30.html"; 
+		//alert(href);
+		var domain_name = href.split("//")[1].split("/")[0];
+		alert(domain_name);
+		if(domain_name)
+		{
+			alert("set domain_name as trust site.");
+			//GFACertEnroll.AddTrustSite("http", domain_name);
+			//GFACertEnroll.AddTrustSite("https", domain_name);
+		}
+	  
+	</script>
+	
+	
+
+		 
+ </head>
+
+ <body>
+ 	<img src="logo.gif" width="556" height="82">
+ <form method="post" name="CSPForm" action="">
+ 	<p align="center"><b><font size="5">CA3.0证书制作接口演示DEMO</font></b></p>
+	</br>
+	
+	CSP: <select name="CspProvider" id="CspProvider"> <input type="button" name="bu_showKeyLength" value="CSP信息" onclick="showCSPmsga();" />
+	</br>
+	
+	subject: <input type="text" name="subject" value="cn=liuzhenxin11,c=cn" size="60" />
+	</br>
+	
+	KeyType： <input type="text" name="keyType" value="RSA" />
+	</br>
+	
+	KeyLength： <input type="text" name="keyLength" value="1024" />
+	</br>
+	
+	KeySpace： <input type="text" name="keySpace" value="1" />
+	</br>
+	
+	PKCS10:    <textarea name="pkcs10" rows="5" cols="80"></textarea>
+	</br>
+	
+	<button type="button" onclick="createPKCS10()">Create PKCS10</button>
+	</br>
+	
+	P7B:    <textarea name="p7b" rows="5" cols="80"></textarea>
+	</br>
+	
+	<button type="button" onclick="installSignCert()">Install Sign Cert</button>
+	</br>
+	
+	old sign SN:  <input type="text" name="oldsn" value="3932d5cb87c3fdece6f7aa58496f237c" size="60" />
+  </br>
+	
+	<button type="button" onclick="UpdateSignCert()">update Sign Cert</button>
+	</br>
+	
+	<button type="button" onclick="UpdateSignCertEx()">update Sign Cert(new keyspair)</button>
+	</br>
+	
+	
+	source: <input type="text" name="signsource" value="123" size="60"/>
+  </br>
+  
+	result: <textarea name="signresult" rows="5" cols="80"></textarea>
+	</br>
+	
+	<button type="button" onclick="SignedData()"> Sign data</button>
+	</br>
+	
+	encry session:    <textarea name="sessionkey" rows="5" cols="80"> </textarea>
+	</br>
+	
+	encry prikey:    <textarea name="prikey" rows="5" cols="80"></textarea>	
+	</br>
+	
+	P7B2:<textarea name="p7b2" rows="5" cols="80"></textarea>
+	</br>
+	
+	old enc SN:    <input type="text" name="oldsn2" value="" size="60" />
+  </br>
+  
+	<button type="button" onclick="InstallDoubleCert()">Install double Cert</button>
+  </br>
+	
+	<button type="button" onclick="UpdateDoubleCert()">update double Cert</button>
+	</br>
+	
+	<button type="button" onclick="UpdateDoubleCertEx()">update double Cert(new keyspair)</button>
+	</br>
+	
+	<button type="button" onclick="InstallEncCert()">Install Enc Cert</button>
+	</br>
+	
+	<button type="button" onclick="UpdateEncCert()">update enc Cert</button>
+	</br>
+	
+	<button type="button" onclick="UpdateEncCertEx()">update enc Cert(new keyspair)</button>
+	</br>
+	
+	<button type="button" onclick="GetUserCerts()">GetUserCerts</button>
+	</br>
+	
+	user certs: <select name="UserCerts" id="UserCerts"><select/> <input type="button" name="bu_showCurrentCertInfo" value="当前证书信息" onclick="showCurrentCertInfo();" />
+	</br>
+	
+	current cert info:  <input type="text" name="currentcertinfo" id="currentcertinfo" value="当前证书信息" size="60" />
+  </br>
+	
+	
+	subject: <input type="text" name="inputstr" value="大小" length="100" />
+	</br>
+	
+	<button type="button" onclick="TestFun1()">Test Fun1</button>
+	</br>
+	
+</form>
+  <script type="text/javascript"> 
+  initCsp();
+ 	GetUserCerts();
+ 	
+ 	//枚举当前系统安装的CSP
+ 	function initCsp()
+	{
+		var cspOptions = document.getElementById("CspProvider");
+		var csps = GFACertEnroll.EnumProviders();
+		var cspitems = csps.toArray();
+		alert(cspitems);
+		var count = cspitems.length;
+		alert(count);
+		var obj = new VBArray(GFACertEnroll.EnumProviders());
+  		var retVal = obj.toArray(); //用VBArray将安全数组转为JS数组
+	    	for(var i=0;i<retVal.length;i++)
+	    	{
+   	  		var option = document.createElement('option');
+   	 		option.value = retVal[i];
+   	  		option.text = retVal[i];
+   	  		cspOptions.add(option);		   
+	    	}
+	}
+	
+	//枚举当前系统安装的证书
+	function GetUserCerts()
+	{
+		var certOptions = document.getElementById("UserCerts");
+		//
+		// 过滤说明：
+		// 第一参数数是颁发者主题
+		// 第二个参数是证书序列号
+		//GFACertEnroll.SetFilter("Issuer", "SN");
+
+		// 设置过Filter后要想取消过滤条件必须都设置成空
+		//例如：
+		//GFACertEnroll.SetFilter("", "");
+
+		// 设置 证书序列号过滤
+		//GFACertEnroll.SetFilter("", "7924be9902928573bdbf20983ceabe0b");
+
+		// 设置 颁发者主题过滤
+		//GFACertEnroll.SetFilter("C=CN, S=BEIJING, L=BETDA, O=CIECC, OU=GFA TRUST NETWORK, CN=ROOT CERTIFICATE FOR GFA TRUST NETWORK", "");
+		//GFACertEnroll.SetFilter("CN=ROOT CERTIFICATE FOR GFA TRUST NETWORK, OU=GFA TRUST NETWORK, O=CIECC, L=BETDA, S=BEIJING, C=CN", "");
+		//GFACertEnroll.SetFilter("OU=GFA TRUST NETWORK, O=CIECC, L=BETDA, S=BEIJING, C=CN", "");
+
+		var obj = new VBArray(GFACertEnroll.GetUserCerts());
+  		var retVal = obj.toArray(); //用VBArray将安全数组转为JS数组
+	    	for(var i=0;i<retVal.length;i++)
+	    	{
+   	  		var option = document.createElement('option');
+   	 		option.value = retVal[i];
+   	  		option.text = retVal[i];
+   	  		certOptions.add(option);		   
+	    	}
+	}
+	
+	//展示当前CSP名字
+ 	function showCSPmsga()
+	{
+		var nCSPIndex=document.all.CspProvider.selectedIndex;
+		var nCSPName=document.all.CspProvider.options[nCSPIndex].text;
+		var ncspType = document.all.CspProvider.value;
+		//VBScript:showCspInfomation(nCSPName,ncspType);
+		alert(nCSPName);
+		alert(ncspType);
+	}
+	
+	//展示当前证书信息
+ 	function showCurrentCertInfo()
+	{
+		var nCertIndex=document.all.UserCerts.selectedIndex;
+		var certName=document.all.UserCerts.options[nCertIndex].text;
+		var certValue = document.all.UserCerts.value;
+		alert(certName);
+		alert(certValue);
+		document.CSPForm.currentcertinfo.value=certName;
+	}
+
+ //创建pkcs10证书请求
+	function createPKCS10()
+	{
+		var cspName;
+		var subject;
+		var keyType;
+		var keyLength;
+		var keySpace;
+		var pkcs10;
+		var nCSPIndex
+		//cspName = document.CSPForm.cspName.value;
+		subject = document.CSPForm.subject.value;
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		keySpace = document.CSPForm.keySpace.value;
+		
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		//keyspace 1为交换密钥对 2为签名密钥对 如果tempkey为1的话，keyspace内部赋值为1 为交换密钥对
+		pkcs10 = GFACertEnroll.CreatePKCS10(cspName,subject,keyType,keyLength,keySpace,0);
+		alert(pkcs10);
+		document.CSPForm.pkcs10.value=pkcs10;
+
+	}
+	
+  
+	//安装签名证书
+	function installSignCert()
+	{
+		var cspName;
+		var subject;
+		var keyType;
+		var keyLength;
+		var keySpace;
+		var p7b;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		//cspName = document.CSPForm.cspName.value;
+		subject = document.CSPForm.subject.value;
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		rv = GFACertEnroll.InstallSignCert(cspName,p7b,p7bLength,keySpace,keyType);
+		alert(rv);
+	}
+	
+	//更新签名证书  在原来的容器里进行更新
+	function UpdateSignCert()
+	{
+		var cspName;
+		var subject;
+		var keyType;
+		var keyLength;
+		var keySpace;
+		var p7b;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		//cspName = document.CSPForm.cspName.value;
+		subject = document.CSPForm.subject.value;
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		oldsn =  document.CSPForm.oldsn.value;
+		
+		//rv = GFACertEnroll.UpdateSignCert(cspName,p7b,keyType,keySpace,"500138d8e32249c37a3cb4bb7d40ad0b");
+		rv = GFACertEnroll.UpdateSignCert(cspName,p7b,keyType,keySpace,oldsn);
+		
+		alert(rv);
+	}
+	
+	//更新签名证书扩展  更新密钥对的更新 删除原来的容器 创建新的容器 
+	function UpdateSignCertEx()
+	{
+		var cspName;
+		var subject;
+		var keyType;
+		var keyLength;
+		var keySpace;
+		var p7b;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		//cspName = document.CSPForm.cspName.value;
+		subject = document.CSPForm.subject.value;
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		oldsn =  document.CSPForm.oldsn.value;
+		rv = GFACertEnroll.UpdateSignCertEx(cspName,p7b,keyType,keySpace,oldsn);
+		//rv = GFACertEnroll.UpdateSignCertEx(cspName,p7b,keyType,keySpace,"500138d8e32249c37a3cb4bb7d40ad0b");
+		alert(rv);
+	}
+	
+	//指定证书序列号进行数据签名运算
+	function SignedData()
+	{
+		var cspName;
+		var subject;
+		var keyType;
+		var keyLength;
+		var keySpace;
+		var p7b;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		source1 = document.CSPForm.signsource.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		oldsn =  document.CSPForm.oldsn.value;
+		
+		result1 = GFACertEnroll.SignedData(oldsn,source1);
+		document.CSPForm.signresult.value = result1;
+		//alert(result1);
+	}
+	
+	//安装加密证书
+	function InstallEncCert()
+	{
+		var cspName;
+		//var subject;
+		var keyType;
+		var keyLength;
+		//var keySpace;
+		var encryptSessionKey;
+		var encryptPriKey;
+		var p7b;
+		var p7b2;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		//keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		p7b2 = document.CSPForm.p7b2.value;
+		encryptSessionKey = document.CSPForm.sessionkey.value;
+		encryptPriKey = document.CSPForm.prikey.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		rv = GFACertEnroll.InstallEncCert(cspName,keyType,keyLength,"3des",encryptSessionKey,encryptPriKey,p7b2);
+		alert(rv);
+	}
+	
+	
+	//更新加密证书 在原来的容器里进行更新
+	function UpdateEncCert()
+	{
+		var cspName;
+		//var subject;
+		var keyType;
+		var keyLength;
+		//var keySpace;
+		var encryptSessionKey;
+		var encryptPriKey;
+		var p7b;
+		var p7b2;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		//keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		p7b2 = document.CSPForm.p7b2.value;
+		encryptSessionKey = document.CSPForm.sessionkey.value;
+		encryptPriKey = document.CSPForm.prikey.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		oldsn2 =  document.CSPForm.oldsn2.value;
+		
+		rv = GFACertEnroll.UpdateEncCert(cspName,keyType,keyLength,p7b2,oldsn2);
+		alert(rv);
+	}
+	
+	//更新加密证书扩展  更新密钥对的更新 删除原来的容器 创建新的容器 
+	function UpdateEncCertEx()
+	{
+		var cspName;
+		//var subject;
+		var keyType;
+		var keyLength;
+		//var keySpace;
+		var encryptSessionKey;
+		var encryptPriKey;
+		var p7b;
+		var p7b2;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		//keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		p7b2 = document.CSPForm.p7b2.value;
+		encryptSessionKey = document.CSPForm.sessionkey.value;
+		encryptPriKey = document.CSPForm.prikey.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		oldsn2 =  document.CSPForm.oldsn2.value;
+		
+		rv = GFACertEnroll.UpdateEncCertEx(cspName,keyType,keyLength,"3des",encryptSessionKey,encryptPriKey,p7b2,oldsn2);
+		alert(rv);
+	}
+	
+	//安装双证书 加密证书和签名证书	
+  function InstallDoubleCert()
+	{
+		var cspName;
+		//var subject;
+		var keyType;
+		var keyLength;
+		//var keySpace;
+		var encryptSessionKey;
+		var encryptPriKey;
+		var p7b;
+		var p7b2;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		//keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		p7b2 = document.CSPForm.p7b2.value;
+		encryptSessionKey = document.CSPForm.sessionkey.value;
+		encryptPriKey = document.CSPForm.prikey.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		rv = GFACertEnroll.InstallDoubleCert(cspName,keyType,keyLength,"3des",encryptSessionKey,encryptPriKey,p7b,p7b2);
+		alert(rv);
+	}
+	//更新双证书 在原来的容器里进行更新
+	function UpdateDoubleCert()
+	{
+		var cspName;
+		//var subject;
+		var keyType;
+		var keyLength;
+		//var keySpace;
+		var encryptSessionKey;
+		var encryptPriKey;
+		var p7b;
+		var p7b2;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		//keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		p7b2 = document.CSPForm.p7b2.value;
+		encryptSessionKey = document.CSPForm.sessionkey.value;
+		encryptPriKey = document.CSPForm.prikey.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		oldsn =  document.CSPForm.oldsn.value;
+		oldsn2 =  document.CSPForm.oldsn2.value;
+		
+		rv = GFACertEnroll.UpdateDoubleCert(cspName,keyType,keyLength,p7b,oldsn,p7b2,oldsn2);
+		alert(rv);
+	}
+	
+	//更新双证书扩展  更新密钥对的更新 删除原来的容器 创建新的容器 
+	function UpdateDoubleCertEx()
+	{
+		var cspName;
+		//var subject;
+		var keyType;
+		var keyLength;
+		//var keySpace;
+		var encryptSessionKey;
+		var encryptPriKey;
+		var p7b;
+		var p7b2;
+		var p7bLength;
+		var str;
+		var rv;
+		
+		var nCSPIndex
+		nCSPIndex =document.CSPForm.CspProvider.selectedIndex;
+		cspName=document.CSPForm.CspProvider.options[nCSPIndex].text;
+		
+		keyType = document.CSPForm.keyType.value;
+		keyLength = document.CSPForm.keyLength.value;
+		//keySpace = document.CSPForm.keySpace.value;
+		p7b = document.CSPForm.p7b.value;
+		p7b2 = document.CSPForm.p7b2.value;
+		encryptSessionKey = document.CSPForm.sessionkey.value;
+		encryptPriKey = document.CSPForm.prikey.value;
+		str = new String(p7b);
+		p7bLength = str.length;
+		oldsn =  document.CSPForm.oldsn.value;
+		oldsn2 =  document.CSPForm.oldsn2.value;
+		
+		rv = GFACertEnroll.UpdateDoubleCertEx(cspName,keyType,keyLength,"3des",encryptSessionKey,encryptPriKey,p7b,oldsn,p7b2,oldsn2);
+		alert(rv);
+	}
+	
+	
+	
+	//测试控件回显
+	function TestFun1()
+	{
+		var Inputstr;
+		var outputstr;
+		
+		Inputstr = document.CSPForm.inputstr.value;
+		outputstr = GFACertEnroll.TestFun1(Inputstr);
+		alert(outputstr);
+	}
+
+  </script>
+ </body>
+</html>
+

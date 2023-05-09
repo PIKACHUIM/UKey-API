@@ -1,0 +1,44 @@
+[settings]
+; 1033 = 0x0409
+CodePage=1033
+Language=English
+FontFace=Tahoma
+FontHeight=8
+
+[strings]
+;==============================================================
+; Runtime String
+;==============================================================
+10000=USBKey is inserted!
+10001=USBkey is removed!
+10002=Public Key
+10003=Private Key
+10004=Certificate
+10005=Saving %s, please wait...
+10006=%s is saved successfully!
+10007=Failed to save %s!
+10008=Generating key pair, please wait...
+10009=Key pair are generated successfully!
+10010=Failed to generate key pair!
+10011=Low level initializing the USBKey, please wait...
+10012=Low level initialization finished!
+10013=Low level initialization failed!
+10014=initializing the USBKey, please wait...
+10015=USBKey is initialized successfully!
+10016=Failed to initialize USBKey!
+10017=The inserted USBKey can not be recognized!
+10018=Unsafe Removal of Device
+10019=The software Version of the inserted device is newer than the system's ,you need update your software, please close the programs that operate the device and close the internet explorer ,Uninstall the ePass3003 sofeware, and reinstall it from the cdrom.
+10020=DeskTop
+;==============================================================
+; Common string
+;==============================================================
+11000=Certificate Register is ready
+11001=Failed to load PKCS#11 library, please check your installation
+11002=Can not start USBKey monitor, the certificate register can not works perfectly well!
+20226=The password is week, please input stronger password.
+20227=You should set the PIN to be 6-12 combined alphabets and numbers.
+20228=New and old PIN should not be same. Please reinput
+20229=You should set the PIN to be 6-12 combined alphabets and numbers.
+
+1008=SoftKeyboard

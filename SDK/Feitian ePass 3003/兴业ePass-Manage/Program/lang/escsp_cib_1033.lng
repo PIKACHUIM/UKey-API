@@ -1,0 +1,36 @@
+[settings]
+CodePage=1033
+Language=English
+FontFace=Tahoma
+FontHeight=8
+
+[strings]
+;==============================================================
+; Common strings
+;==============================================================
+1=&OK
+2=&Cancel
+;==============================================================
+; Select Slot Dialog
+;==============================================================
+108=Select USBKey
+1007=Select a USB Key to continue operate:
+10000=Name
+10001=Serial Number
+;==============================================================
+; PIN Logon Dialog
+;==============================================================
+107=Logon
+1010=Now need verify your user PIN:
+1011=User PIN:
+2000=&Login
+2001=&Cancel
+2002=Softkeyboard
+20002=User Pin is locked !
+20003=User Pin is Wrong! Retry times : 
+20004=The input Pin Too Long,Please Retry!
+20005=The initial password has invalid charactors, please check and reinput!
+20006=The initial password's length is invalid, please check and reinput!
+20007=The token has been removed!
+20008=Some unknown error has occured£¬please retry or cancel!
+

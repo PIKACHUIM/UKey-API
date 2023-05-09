@@ -1,0 +1,795 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!--
+<META content="IE=7.0000" http-equiv="X-UA-Compatible">
+-->
+
+<embed id="pluginatl" type="application/npDSATL-plugin" hidden="true" >
+
+
+<title>DS2</title>
+	
+<script>
+if(!(!!window.ActiveXObject || "ActiveXObject" in window))
+ { 
+	alert("plugins");
+	DtsSign = document.getElementById('pluginatl');
+	alert(DtsSign.Version);
+	loadPage();
+}	
+</script>	
+		
+<script language="javascript" type="text/javascript">
+	var DtsSign = null;
+	var ostr = '<object classid="clsid:717F80ED-822C-4490-8F4D-9E8981277B17" CODEBASE="Ds20Sign.cab#version=2,0,5,0" onreadystatechange="javascript:if(this.readyState==4) DtsSign=this"> </object>';
+	var ostr64 = '<object classid="clsid:717F80ED-822C-4490-8F4D-9E8981277B17" CODEBASE="Ds20Sign64.cab#version=2,0,5,0" onreadystatechange="javascript:if(this.readyState==4) DtsSign=this"> </object>';
+
+alert("111");
+if(!(!!window.ActiveXObject || "ActiveXObject" in window))
+ { 
+ 	alert("222");
+	;
+}
+else
+{
+	alert("333");
+		if(navigator.cpuClass == 'x86')
+		{
+			alert("32");
+			document.write(ostr);
+		} else
+		{
+			alert("64");
+			document.write(ostr64);
+		}
+	
+}
+
+//var href = window.location.href;
+var href = "https://www.gfbgfb.com/dir/ds20sign.html"; 
+//alert(href);
+var domain_name = href.split("//")[1].split("/")[0];
+alert(domain_name);
+if(domain_name)
+{
+	alert("set domain_name as trust site.");
+	DtsSign.AddTrustSite("http", domain_name);
+	DtsSign.AddTrustSite("https", domain_name);
+}
+	</script>
+
+</head>
+
+<body onLoad="loadPage()">
+<img src="logo.gif" width="556" height="82">
+<p align="center"><b><font size="5">安密通演示DEMO</font></b></p>
+<form method="POST" name="form1" action="--WEBBOT-SELF--" enctype="multipart/form-data">
+	<!--Filter -->
+	<div style="padding:2;background:#ededed;border:1px #999 solid;">
+	 <p style="padding:2;height:30px;background:#6699FF;line-height:30px;color:#FFFFFF;padding-left:10px;"><b>过滤器</b></p>
+    <p>&nbsp;&nbsp;&nbsp; CSP提供商：<input type="text" name="T1" size="74"></p>
+    <p>&nbsp;&nbsp; 证书序列号： <input type="text" name="T2" size="74"></p>
+    <p>&nbsp;证书颁发者： <input type="text" name="T3" size="73" ></p> 
+	<p>&nbsp;&nbsp;&nbsp; 证书主题： <input type="text" name="T4" size="74"></p>
+	</div>
+    <!--Certificate -->
+    <div style="padding: 2; margin-top:25; background:#ededed;border:1px #999 solid;margin-top:5px;" >
+    <p style="padding:2;height:30px;background:#6699FF;line-height:30px;color:#FFFFFF;padding-left:10px;"><b>证书信息</b></p>
+    <p>
+	
+    <input type="button" value="获取证书列表" name="B3" onClick="createList()">
+    &nbsp; &nbsp;<select size="1" name="D1" id="D1" style="width:484px"></select>
+    &nbsp; &nbsp;<input type="button" value="查看证书" name="B12" onClick="viewSelectCert()">
+    &nbsp; &nbsp;<input type="button" value="证书有效性" name="B122" onClick="VerifyCert()">
+    &nbsp; &nbsp;<input type="button" value="证书剩余时间有效性" name="B121" onClick="viewSelectCertRemainTime()">
+    </p>
+    <p>
+    <input type="button" value="取Base64证书" name="B15" onClick="getCertSelectCert()">
+    &nbsp;&nbsp;&nbsp;<textarea rows="12" name="S4" cols="69"></textarea>
+    </p>
+    
+    <p>
+    请输入证书密码：<input type="text" name="S44" size="53">
+    &nbsp;&nbsp;&nbsp;<input type="button" value="验证证书密码" name="B155" onClick="verifyCertPasswd()">
+    </p>
+    
+    <p>
+    <input type="button" value="获取选择证书属性" name="B4" onClick="getSelectCertInfo()">
+    </p>
+	</div>
+    <!--Certificate property-->
+    <div style="padding: 2; margin-top:25; background:#ededed;border:1px #999 solid;margin-top:5px;">
+    <p style="padding:2;height:30px;background:#6699FF;line-height:30px;color:#FFFFFF;padding-left:10px;"><b>证书属性</b></p>
+    <p>证书CN：<input type="text" name="T5" size="20" style="width: 213px">&nbsp;&nbsp;&nbsp;证书主题：<input type="text" name="T6" size="113"></p>
+    <p>证书序列号：<input type="text" name="T8" size="31">&nbsp;&nbsp;&nbsp; 证书颁发者：<input type="text" name="T7" size="95">&nbsp;&nbsp;</p>
+    <p>证书起始有效期：<input type="text" name="T9" size="53">&nbsp;&nbsp; 证书结束有效期：<input type="text" name="T10" size="63">&nbsp;&nbsp;&nbsp; </p>
+    <p>证书OU：<input type="text" name="T42" size="53">&nbsp;&nbsp;&nbsp; 证书O：<input type="text" name="T43" size="53">&nbsp;&nbsp;&nbsp; </p>
+	<p>证书L：<input type="text" name="T44" size="53">&nbsp;&nbsp;&nbsp; 证书E：<input type="text" name="T45" size="53">&nbsp;&nbsp;&nbsp; </p>	
+	<p>证书C：<input type="text" name="T46" size="53">&nbsp;&nbsp;&nbsp; 证书S：<input type="text" name="T47" size="53">&nbsp;&nbsp;&nbsp; </p>	
+	<p>证书STREET：<input type="text" name="T48" size="53">&nbsp;&nbsp;&nbsp; 证书T：<input type="text" name="T49" size="53">&nbsp;&nbsp;&nbsp; </p>	
+	<p>证书G：<input type="text" name="T50" size="53">&nbsp;&nbsp;&nbsp; 证书I：<input type="text" name="T51" size="53">&nbsp;&nbsp;&nbsp; </p>	
+	<p>证书SN：<input type="text" name="T52" size="53">&nbsp;&nbsp;&nbsp; 证书DC：<input type="text" name="T53" size="53">&nbsp;&nbsp;&nbsp; </p>	
+	<p>OID：<input type="text" name="T54" size="53">&nbsp;&nbsp;&nbsp; oid对应值：<input type="text" name="T55" size="53">&nbsp;&nbsp;&nbsp; </p>
+  <!--  <p><input type="button" value="获取OID值" name="B321" onClick="getSelectCertInfoEx()"></p>-->
+    </div>
+    
+    
+    </div>
+    <!--Sign Message & Verify-->
+	<div style="padding: 2; margin-top:25; background:#ededed;border:1px #999 solid;margin-top:5px;">
+	<p style="padding:2;height:30px;background:#6699FF;line-height:30px;color:#FFFFFF;padding-left:10px;"><b>证书操作</b></p>
+	<div style="padding: 2">
+    <p style="padding-bottom:5px;border-bottom:1px #CCCCCC dashed;color:#0033CC;"><b>P7签名验签操作</b></p>
+    <p><b>签名:</b></p>
+    <p>&nbsp;&nbsp;原文：<input type="text" name="T11" size="20" style="width: 400px">&nbsp;&nbsp;&nbsp;&nbsp;是否带原文：<input type="checkbox" name="C1" value="ON">&nbsp;&nbsp;<input type="button" value="签名" name="B5" onClick="envSign()"></p>
+    <p>签名数据：<textarea rows="8" name="S1" cols="123"></textarea></p>
+    <br />
+    <p><b>验证签名:</b></p>
+	<p>&nbsp;&nbsp;原文：<input type="text" name="T23" size="32" style="width: 400px">&nbsp;&nbsp;&nbsp;&nbsp;是否带原文：<input type="checkbox" name="C2" value="ON">&nbsp;&nbsp;<input type="button" value="验证" name="B21" onClick="envVerifyMsg()"></p>
+    <p>签名证书属性：<input type="text" name="T24" size="129"></p>
+    <p><b>文件签名:</b></p>
+    <p>签名文件：<input type="file" name="F9" size="51">&nbsp;&nbsp;<input type="button" value="签名" name="B32" onClick="envSignFile()"></p>
+    <p>签名数据：<textarea rows="7" name="S11" cols="91"></textarea></p>
+    <p><b>验证文件签名:</b></p>
+    <p><input type="button" value="验证" name="B33" onClick="envVerifyFile()">&nbsp;&nbsp; 签名证书：<input type="text" name="T40" size="20" style="width: 238px"></p>
+	</div>
+    <!--Encryp & Decrypt -->
+	<div style="padding: 2; margin-top:25; ">
+	<p style="padding-bottom:5px;border-bottom:1px #CCCCCC dashed;color:#0033CC;"><b>证书加解密操作</b></p>
+        <p><b>数据加解密:</b><p>
+        <p>原文：<input type="text" name="T12" size="20" style="width: 485px">&nbsp;&nbsp;<input type="button" value="公钥加密" name="B6" onClick="encSelectCert()"></p>
+        <p>密文：<textarea rows="7" name="S2" cols="67"></textarea>&nbsp;&nbsp;<input type="button" value="私钥解密" name="B7" onClick="decSelectCert()"></p>
+        <p>解密后数据：<input type="text" name="T13" size="20" style="width: 455px"></p> 
+        <p><b>文件加解密:</b></p>
+        <p>原始文件：<input type="file" name="F1" size="42">
+        &nbsp;&nbsp;加密后文件：<input type="text" name="T14" size="52">
+        &nbsp;&nbsp;<input type="button" value="加密" name="B8" onClick="encFileSelectCert()">
+        </p>
+	    <p>密文文件：<input type="file" name="F3" size="42">
+        &nbsp;&nbsp;解密后文件：<input type="text" name="T15" size="52">
+        &nbsp;&nbsp;<input type="button" value="解密" name="B9" onClick="decFileSelectCert()">
+        </p>
+         <p><b>P7加解密:</b></p>
+         <p>原文：<input type="text" name="T16" size="20" style="width: 485px">&nbsp;&nbsp;<input type="button" value="加密" name="B10" onClick="envEncrypt()"></p>
+         <p>密文：<textarea rows="7" name="S3" cols="79"></textarea>&nbsp;&nbsp;<input type="button" value="解密" name="B22" onClick="envDecryptMsg()"></p>
+         <p>解密后数据：<input type="text" name="T25" size="50" style="width: 431px"></p>
+         <p><b>P7文件加解密:</b></p>
+         <p>原始文件：<input type="file" name="T410" size="45">&nbsp;&nbsp;加密后文件：<input type="text" name="T411" size="52">&nbsp;&nbsp;<input type="button" value="加密" name="B322" onClick="P7EncryptFile()"></p>
+         <p>密文文件：<input type="file" name="T412" size="45">&nbsp;&nbsp;解密后文件：<input type="text" name="T413" size="52">&nbsp;&nbsp;<input type="button" value="解密" name="B320" onClick="P7DecryptFile()"></p>
+         <p>证书：<input type="text" name="T414" size="52"></p>
+	</div>
+    </div>
+    
+    <!--SymEncryptFile and SymDecryptFile -->
+	<div style="padding:2;background:#ededed;border:1px #999 solid;">
+	 <p style="padding:2;height:30px;background:#6699FF;line-height:30px;color:#FFFFFF;padding-left:10px;"><b>文件对称加密</b></p>
+	 <p> <input type="button" value="产生对称密钥" name="XXXB322" onClick="GenertKey()"> &nbsp;&nbsp;<input type="text" name="XT414" size="52"></p>
+   <p> 原始文件：<input type="file" name="XT410" size="45">&nbsp;&nbsp;加密后文件：<input type="text" name="XT411" size="52">&nbsp;&nbsp;<input type="button" value="对称加密" name="ttXB322" onClick="jsSymEncryptFile()"></p>
+   <p>密文文件：<input type="file" name="XT412" size="45">&nbsp;&nbsp;解密后文件：<input type="text" name="XT413" size="52">&nbsp;&nbsp;<input type="button" value="对称解密" name="XB320" onClick="jsSymDecryptFile()"></p>
+	</div>
+    </form>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+String.prototype.getByteLength = function()
+{
+	return this.replace("×", "**").replace(/[^(\x00-\xff)]/g, "**").length;
+}
+//初始加载信息
+function loadPage()
+{
+	alert("enter loadPage");
+	if(!(!!window.ActiveXObject || "ActiveXObject" in window))
+	{
+		alert("xxxx");
+		DtsSign = document.getElementById('pluginatl');
+		//alert(DtsSign.Version);
+	}
+	alert(DtsSign.Version);
+	var selectMenu = document.getElementById("D5");
+	var options = new Array();
+	var cspcnt = DtsSign.GetCspCnt();
+	
+	
+//	for (var i = 0; i < cspcnt ; i++) {
+//		options[i] = document.createElement("option");
+//		options[i].value = i;		
+//		options[i].appendChild(document.createTextNode(DtsSign.GetCspName(i)));
+//		selectMenu.appendChild(options[i]);
+//	}
+	
+
+}
+// 设置证书查询条件。
+function SetFilters(varCspName, varIssuerDn, varSubjectDn, varSn) {
+	if(!(!!window.ActiveXObject || "ActiveXObject" in window))
+	{
+		DtsSign = document.getElementById('pluginatl');
+	
+	}
+	
+	var certFilter = DtsSign.Filter;
+	
+	certFilter.Clear();
+	
+	if (varCspName != null) {
+		certFilter.CSP = varCspName;
+		//certFilter.CSPS = varCspName;
+	}
+	
+	if (varIssuerDn != null) {
+		certFilter.Issuer = varIssuerDn;		
+		//certFilter.AddFilterElement(varIssuerDn);
+		
+	}
+
+	if (varSubjectDn != null) {
+		certFilter.subject = varSubjectDn;
+	}
+
+	if (varSn != null) {
+		certFilter.SerialNumber = varSn;
+	}
+	//certFilter.KeySpec = 2;
+}
+
+
+// 创建国富安证书列表-获取证书列表
+function createList() 
+{
+	if(!(!!window.ActiveXObject || "ActiveXObject" in window))
+	{
+		DtsSign = document.getElementById('pluginatl');
+	
+	}
+	
+	var issuerDN = "CN=OPERATION CA01 FOR GFA TRUST NETWORK TEST, OU=GFA TRUST NETWORK, O=CIECC, L=BETDA, S=BEIJING, C=CN";
+
+	//document.form1.D1.remove();
+	//new
+	SetFilters(document.form1.T1.value, document.form1.T3.value, document.form1.T4.value, document.form1.T2.value);
+	var certFilter = DtsSign.Filter;
+	
+	//certFilter.KeyUsage = 0x80;
+	//certFilter.KeySpec= 2;
+	certs = DtsSign.Certificates;
+	//certs = DtsSign.OtherCerts;
+	
+	//var idx = certs.Select();
+	//alert(certs(idx).CommonName);
+	//certs = DtsSign.OtherCerts;
+
+	//certs = DtsSign.NULLCerts;
+	//var mycert1 = DtsSign.GetCertFromFile("E:\\Certs4Test\\8U2F22_test01.p12", "8U2F22", 1);
+	//var mycert2 = DtsSign.GetCertFromFile("E:\\Certs4Test\\8U2F22_test02.p12", "111111", 1);
+	//certs.Add(mycert1);
+	//certs.Add(mycert2);
+	//var msg = certs.EncryptMessage("hello");
+	//alert(msg);
+
+	var certCount = certs.Count;
+	var strCerts = "";
+	var selectMenu = document.getElementById("D1");
+	selectMenu.options.length = 0;
+
+	var options = new Array();
+
+	if (certCount == 0) {
+		var _option = document.createElement("option");
+
+		_option.value = 0;
+
+		_option.appendChild(document.createTextNode("没有相关证书"));
+		selectMenu.appendChild(_option);
+	} else {
+		for (var i = 0; i < certCount; i++) {
+			// 证书属性
+			strCerts += i + "-";
+			//strCerts += certs(i).CommonName + "-" + certs(i).KeySpec + "-" + certs(i).KeyUsage;
+			if(certs(i).KeySpec==2)
+				strCerts += certs(i).CommonName + "-" + "签名" + "-" + certs(i).KeyUsage;
+			else
+				strCerts += certs(i).CommonName + "-" + "加密" + "-" + certs(i).KeyUsage;
+				
+			options[i] = document.createElement("option");
+			options[i].value = certs(i).SerialNumber;
+
+			options[i].appendChild(document.createTextNode(strCerts));
+			selectMenu.appendChild(options[i]);
+
+			strCerts = "";
+		}
+	}
+}
+//证书有效性
+function VerifyCert()
+{
+	//返回0为成功
+	var selectcert = certs(document.form1.D1.selectedIndex);
+	
+	var eee =  selectcert.VerifyValid (5);
+	//var eee =  selectcert.VerifyValid (1,"d:/test.crl")	;
+	  alert(eee);
+	
+}
+//证书结束时间
+function viewSelectCertRemainTime()
+{
+	// from 1899 to 1970
+	var cStrStartDate = "1899/12/30";
+	var cDate = new Date(cStrStartDate);
+	var lCTime = cDate.getTime();
+
+	// from 1970 to Now
+	var jsDate = new Date();
+	var lJSTime = jsDate.getTime();
+
+	var lTime = lJSTime - lCTime;
+	var lOneDaySecond = 86400000;
+	var dOleDate = lTime/lOneDaySecond;
+	alert(dOleDate);
+	
+	var selectcert = certs(document.form1.D1.selectedIndex);
+	
+	var eee =  selectcert.CheckRemainingDaysValid(5,dOleDate);
+ //var eee = selectcert.CheckRemainingDaysValid(1);
+	  alert(eee);
+	
+}
+//显示证书信息
+function viewSelectCert()
+{
+	//var selectcert = certs(document.form1.D1.selectedIndex);
+	//var eee = selectcert.VerifyValid(3, 7);
+	//alert(eee);
+	//return;
+	//alert("c:\\CertHelperPb7.p7b");
+  //DtsSign.ImportCer("d:\\testtest.cer");
+	//var err = DtsSign.InstallCertChain("d:\\ca.cer");
+	//alert(err);
+	//return;
+	
+	var selectcert = certs(document.form1.D1.selectedIndex);
+	//var eee = selectcert.VerifyValid(1,"大b");
+	//alert(eee);
+	
+	selectcert.View();
+	return;
+	//alert(selectcert.VerifyValid(3, 7));
+	//var crl = selectcert.CRLUrl;
+	//alert(crl);
+	//var lrev = selectcert.VerifyValid(5);
+	//alert(lrev);
+	
+	//var lll = selectcert.VerifyValid(3, 0);
+	//alert(lll);
+	alert(selectcert.CRLUrl);
+	var cnt = selectcert.GetCRLPointCnt();
+	alert(cnt);
+	for (var i = 0; i < cnt; i++) 
+	{
+		var ccc = selectcert.GetCRLPoint(i);
+		alert(ccc);
+	}
+}
+
+function show_time(time)
+{   
+	var year = time.getFullYear();       //年
+  var month = time.getMonth() + 1;     //月
+  var day = time.getDate();            //日
+ 
+  var hh = time.getHours();            //时
+  var mm = time.getMinutes();          //分
+  var ss = time.getSeconds();
+ 
+  var clock = year + "-";
+ 
+  if(month < 10)
+      clock += "0";
+ 
+  clock += month + "-";
+ 
+  if(day < 10)
+      clock += "0";
+     
+  clock += day + " ";
+ 
+  if(hh < 10)
+      clock += "0";
+     
+  clock += hh + ":";
+  
+  if (mm < 10) clock += '0'; 
+  clock += mm + ":"; 
+  
+  if(ss < 10)
+      clock += "0";
+  
+  clock += ss;
+  return(clock); 
+} 
+
+//获取选择证书属性
+function getSelectCertInfo()
+{
+	var selectcert = certs(document.form1.D1.selectedIndex);
+	document.form1.T5.value = selectcert.CommonName;
+	document.form1.T6.value = selectcert.Subject;
+	document.form1.T7.value = selectcert.Issuer;
+	document.form1.T8.value = selectcert.SerialNumber;
+	//document.form1.T9.value = selectcert.ValidFrom;
+	
+	//document.form1.T9.value = new Date(selectcert.ValidFrom);
+	//document.form1.T10.value = new Date(selectcert.ValidTo);
+	document.form1.T9.value = show_time(new Date(selectcert.ValidFrom));
+	document.form1.T10.value = show_time(new Date(selectcert.ValidTo));
+	
+	
+	document.form1.T42.value = selectcert.GetCertRDN(0, 3);
+	document.form1.T43.value = selectcert.GetCertRDN(0, 2);
+	document.form1.T44.value = selectcert.GetCertRDN(0, 1);
+	document.form1.T45.value = selectcert.GetCertRDN(0, 4);	
+	document.form1.T46.value = selectcert.GetCertRDN(0, 5);
+	document.form1.T47.value = selectcert.GetCertRDN(0, 6);	
+	document.form1.T48.value = selectcert.GetCertRDN(0, 7);
+	document.form1.T49.value = selectcert.GetCertRDN(0, 8);	
+	document.form1.T50.value = selectcert.GetCertRDN(0, 9);	
+	document.form1.T51.value = selectcert.GetCertRDN(0, 10);
+	document.form1.T52.value = selectcert.GetCertRDN(0, 11);
+	document.form1.T53.value = selectcert.GetCertRDN(0, 12);
+	
+	//alert(selectcert.CertType);
+
+	/*
+	var keycnt = DtsSign.DetectKey("gm3000_pkcs11_gfa.dll");
+	if(keycnt>0)
+	{
+		var keysn = DtsSign.GetSMKeySN("gm3000_pkcs11_gfa.dll", 0); //GFACSP11.dll ESAP11.dll GfaSealPkcs11.dll
+		alert(keysn);
+	}
+	else
+	{
+		alert("no key");
+	}
+	*/
+	
+}
+//获取选择证书属性oid
+function getSelectCertInfoEx()
+{
+	var selectcert = certs(document.form1.D1.selectedIndex);
+	
+	document.form1.T55.value = selectcert.GetCertRDNEx(0, document.form1.T54.value);
+	
+	/*
+	var keycnt = DtsSign.DetectKey("GFACSP11.dll");
+	if(keycnt>0)
+	{
+		var keysn = DtsSign.GetSMKeySN("GFACSP11.dll", 0); //GFACSP11.dll ESAP11.dll GfaSealPkcs11.dll
+		alert(keysn);
+	}
+	else
+	{
+		alert("no key");
+	}
+	*/
+}
+//取Base64证书
+function getCertSelectCert()
+{
+	var cert;
+	var selectcert = certs(document.form1.D1.selectedIndex);
+
+	cert = selectcert.GetEncodedCert(2);
+
+	document.form1.S4.value = cert;
+}
+
+//校验证书密码
+function verifyCertPasswd()
+{
+	var ret;
+	var selectcert = certs(document.form1.D1.selectedIndex);
+
+	ret = selectcert.CSPCheckUsbKeyPin(document.form1.S44.value);
+	alert(ret);
+	if(0 == ret)
+			return true;
+	else
+			return false;
+}
+
+// 字符串p7签名
+function envSign()
+{
+	var signmsg;
+	var selectcert = certs(document.form1.D1.selectedIndex);
+	var startTime,endTime; 
+	var d = new Date();
+	startTime = d.getTime();
+	//selectcert.SetUsbKeyPin("1234");
+
+	//selectcert.SetAlgType(1);
+	//alert('1');
+
+	if(document.form1.C1.checked)
+		signmsg = selectcert.SignMessage(document.form1.T11.value, 1);
+	else
+		signmsg = selectcert.SignMessage(document.form1.T11.value);
+	var e = new Date();
+	endTime = e.getTime();
+	//alert((endTime-startTime)/1000);
+	document.form1.S1.value = signmsg;
+	//var msg = DtsSign.GetLastErrMsg();
+	//alert(msg);
+}
+
+// 字符串p7验签
+function envVerifyMsg()
+{
+	var type = 0;
+	if(document.form1.C2.checked)
+		type = 1;
+
+	var signcert = DtsSign.VerifyMsg(document.form1.S1.value, type, document.form1.T23.value);
+
+	var err = DtsSign.GetLastErr();
+	alert(err);
+	var errSys = DtsSign.GetSysLastErr();
+	alert(errSys);
+		
+	if(signcert==null)
+		alert("验证失败！");
+	else
+		alert("验证成功！");
+
+	var sCerts = "";
+	// cert 的各种属性，可以输出测试
+	sCerts += signcert.CommonName;
+	sCerts += "\t";
+	sCerts += new Date(signcert.ValidFrom);
+	sCerts += "\t";
+	sCerts += new Date(signcert.ValidTo);
+	sCerts += "\n";
+	
+	document.form1.T24.value = sCerts;		
+}
+
+
+
+
+
+//p7文件签名
+function envSignFile()
+{
+	var signmsg;                                                     
+	var selectcert = certs(document.form1.D1.selectedIndex);
+	//
+    //P7签名文件（循环读取，支持大文件，不包含原文）
+	signmsg = selectcert.EnvelopedSignFile(document.form1.F9.value);
+
+	document.form1.S11.value = signmsg;
+	
+	//var signmsg;
+	//var selectcert = certs(document.form1.D1.selectedIndex);
+	//if(document.form1.C3.checked)
+	//	signmsg = selectcert.EnvSignFile(document.form1.F9.value, 1);
+	//else
+	//	signmsg = selectcert.EnvSignFile(document.form1.F9.value);
+	//document.form1.S11.value = signmsg;
+}
+//p7文件验签
+function envVerifyFile()
+{
+	var cert;
+	//alert(document.form1.S11.value);
+	alert(document.form1.F9.value);
+
+	cert = DtsSign.EnvelopedVerifyFile(document.form1.S11.value, document.form1.F9.value);	
+	
+	if(cert!=null)
+	{
+		alert("验证成功！");
+		document.form1.T40.value = cert.CommonName;
+	}	
+	//var cert;
+	//if(document.form1.C3.checked)
+	//	cert = DtsSign.VerifyEnvFile(document.form1.S11.value, 1, document.form1.F9.value);
+	//else
+	//	cert = DtsSign.VerifyEnvFile(document.form1.S11.value, 0, document.form1.F9.value);	
+	//if(cert!=null)
+	//{
+	//	alert("验证成功！");
+	//	document.form1.T40.value = cert.CommonName;
+	//}
+}
+
+
+//字符串P7加密
+function envEncrypt() {
+    var envmsg;
+    var selectcert = certs(document.form1.D1.selectedIndex);
+
+    envmsg = selectcert.EnvelopedEncryptMsg(document.form1.T16.value, document.form1.T16.value.getByteLength());
+
+    document.form1.S3.value = envmsg;
+}
+//字符串p7解密
+function envDecryptMsg() {
+    //var rawmsg = DtsSign.EnvelopedDecryptMsg(document.form1.S9.value, document.form1.S9.value.getByteLength());	
+    var rawmsg = DtsSign.EnvelopedDecryptMsg(document.form1.S3.value, document.form1.S3.value.getByteLength());
+    document.form1.T25.value = rawmsg;
+    alert(DtsSign.GetlastErr());
+}
+//P7文件加密
+function P7EncryptFile() {
+    var nullcerts = DtsSign.NULLCerts;
+    //var mycert1 = DtsSign.GetCertFromFile(document.form1.F10.value, "", 0);
+    //var mycert2 = DtsSign.GetCertFromFile(document.form1.F11.value, "", 0);
+    //var mycert3 = DtsSign.GetCertFromFile(document.form1.F12.value, "", 0);	
+    var selectcert = certs(document.form1.D1.selectedIndex);
+    nullcerts.Add(selectcert);
+    alert(DtsSign.GetLastErr());
+
+    //nullcerts.Add(mycert2);
+    //nullcerts.Add(mycert3);	
+
+    var err = nullcerts.EncryptP7File(document.form1.T410.value, document.form1.T411.value);
+    alert(err);
+}
+//P7文件解密
+function P7DecryptFile() {
+    var myoutcert = DtsSign.EnvelopeDecryptFile(document.form1.T412.value, document.form1.T413.value);
+    if (myoutcert) {
+        //alert(myoutcert.CommonName);
+	alert("解密成功");
+        document.form1.T414.value = myoutcert.CommonName
+    }
+    else
+    {
+	alert("解密失败");
+        alert(DtsSign.GetLastErr());
+    }
+}
+
+
+
+//非对称公钥数据加密
+function encSelectCert()
+{
+	var encmsg;
+	var selectcert = certs(document.form1.D1.selectedIndex);
+
+	encmsg = selectcert.DirectCryptPubKey(document.form1.T12.value, document.form1.T12.value.getByteLength());
+
+	document.form1.S2.value = encmsg;
+}
+//非对称公钥数据解密
+function decSelectCert()
+{
+	var decmsg;
+	var selectcert = certs(document.form1.D1.selectedIndex);
+
+	decmsg = selectcert.DirectDecryptPriKey(document.form1.S2.value, document.form1.S2.value.getByteLength());
+
+	//alert(selectcert.GetLastErr());
+	//alert(selectcert.GetSysLastErr());
+
+	document.form1.T13.value = decmsg;
+}
+
+
+//非对称公钥文件加密
+function encFileSelectCert()
+{
+	var lRev;
+	var selectcert = certs(document.form1.D1.selectedIndex);
+
+	lRev = selectcert.CryptFilePubKey(document.form1.F1.value, document.form1.T14.value);
+
+	if(lRev==0)
+		alert("加密文件失败！");
+	else
+		alert("加密文件成功！");
+}
+//非对称私钥文件解密
+function decFileSelectCert()
+{
+	var lRev;
+	var selectcert = certs(document.form1.D1.selectedIndex);
+
+	lRev = selectcert.DecryptFilePriKey(document.form1.F3.value, document.form1.T15.value);
+
+	if(lRev==0)
+		alert("解密文件失败！");
+	else
+		alert("解密文件成功！");
+}
+
+
+function digest()
+{
+	var ims = document.form1.D3.options;
+    var ims2 = document.form1.D31.options;
+
+	var tt;
+	tt = DtsSign.DigestData(document.form1.T26.value, document.form1.T26.value.getByteLength(), ims[document.form1.D3.selectedIndex].value, ims2[document.form1.D31.selectedIndex].value);
+
+	//alert(DtsSign.GetLastErr());
+	//alert(DtsSign.GetSysLastErr());
+	document.form1.T27.value = tt;
+}
+
+function digest1()
+{
+	var ims = document.form1.D3.options;
+ var ims2 = document.form1.D31.options;
+
+	var tt;
+	tt = DtsSign.DigestData(document.form1.T26.value, document.form1.T26.value.getByteLength(), ims[document.form1.D3.selectedIndex].value,ims2[document.form1.D31.selectedIndex].value);
+	var selectcert = certs(document.form1.D1.selectedIndex);
+	var tt2 ;
+	tt2 = selectcert.SignMessage(tt, 0);
+	document.form1.T163.value = tt2;
+	
+}
+
+function digestFile()
+{
+	var ims = document.form1.D4.options;
+	
+	var tt;
+	tt = DtsSign.DigestFile(document.form1.F5.value, ims[document.form1.D4.selectedIndex].value,1);
+	document.form1.T28.value = tt;
+}
+
+
+function EncodeString()
+{
+	var ims = document.form1.D14.options;
+	
+	var tt;
+	tt = DtsSign.EncodeString(document.form1.T161.value,1);
+	document.form1.T162.value = tt;
+}
+
+function EncodeFile()
+{
+	var ims = document.form1.D14.options;
+	
+	var tt;
+	tt = DtsSign.EncodeFile(document.form1.F16.value,document.form1.T128.value ,ims[document.form1.D14.selectedIndex].value);
+	alert( tt);
+}
+
+ //产生对称密钥
+function GenertKey(){
+	var key;
+	key = DtsSign.GenertKey();
+	//alert(key);
+	document.form1.XT414.value = key.toString();
+}
+
+//对称加密
+function jsSymEncryptFile() {
+		var ret;
+		ret = DtsSign.SymEncryptFile(document.form1.XT410.value, document.form1.XT411.value, document.form1.XT414.value);
+    alert(ret);
+    
+}
+//对称解密
+function jsSymDecryptFile() {
+    var ret;
+		ret = DtsSign.SymDecryptFile(document.form1.XT412.value, document.form1.XT413.value, document.form1.XT414.value);
+    alert(ret);
+}
+//-->
+</SCRIPT>
+
+</body>
+
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
